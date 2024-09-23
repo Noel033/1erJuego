@@ -4,9 +4,9 @@ const scoreElement = document.getElementById("score");
 const milestoneGif = document.getElementById("milestone-gif");
 const eatSound = document.getElementById("eat-sound");
 let pokemons = [{ x: 185, y: 385 }];
-let dx = 0.5; // Velocidad inicial reducida
+let dx = 0.5;
 let dy = 0;
-let step = 0.5; // Paso inicial reducido
+let step = 0.5;
 let score = 0;
 let isGamePaused = false;
 let currentDirection = "right";
@@ -29,15 +29,11 @@ function updatePositions() {
   let newX = pokemons[0].x + dx;
   let newY = pokemons[0].y + dy;
 
-  if (
-    newX < 0 ||
-    newX > gameArea.clientWidth - 30 ||
-    newY < 0 ||
-    newY > gameArea.clientHeight - 30
-  ) {
-    resetGame();
-    return;
-  }
+  // Ajustar posición si sale de los límites
+  if (newX < 0) newX = gameArea.clientWidth - 30;
+  if (newX > gameArea.clientWidth - 30) newX = 0;
+  if (newY < 0) newY = gameArea.clientHeight - 30;
+  if (newY > gameArea.clientHeight - 30) newY = 0;
 
   for (let i = pokemons.length - 1; i > 0; i--) {
     pokemons[i].x = pokemons[i - 1].x - (dx * pokemonSpacing) / step;
@@ -82,11 +78,9 @@ function checkCollision() {
     growPokemon();
     playEatSound();
 
-    // Aumentar la velocidad después de 20 puntos
-    if (score === 20) {
-      dx *= 1.5;
-      dy *= 1.5;
-      step *= 1.5;
+    // Aumentar la velocidad gradualmente
+    if (score === 5 || score === 15 || score === 30) {
+      increaseSpeed();
     }
 
     if (score === 25 || score === 50) {
@@ -95,10 +89,11 @@ function checkCollision() {
   }
 }
 
-function changeDirection(newDx, newDy, newDirection) {
-  dx = newDx * step;
-  dy = newDy * step;
-  currentDirection = newDirection;
+function increaseSpeed() {
+  const speedIncrease = 1.2;
+  dx *= speedIncrease;
+  dy *= speedIncrease;
+  step *= speedIncrease;
 }
 
 function growPokemon() {
@@ -127,8 +122,8 @@ function showMilestoneGif() {
 }
 
 function changeDirection(newDx, newDy, newDirection) {
-  dx = newDx;
-  dy = newDy;
+  dx = newDx * step;
+  dy = newDy * step;
   currentDirection = newDirection;
 }
 
@@ -139,23 +134,23 @@ function playEatSound() {
 
 document
   .getElementById("up-button")
-  .addEventListener("click", () => changeDirection(0, -step, "up"));
+  .addEventListener("click", () => changeDirection(0, -1, "up"));
 document
   .getElementById("down-button")
-  .addEventListener("click", () => changeDirection(0, step, "down"));
+  .addEventListener("click", () => changeDirection(0, 1, "down"));
 document
   .getElementById("left-button")
-  .addEventListener("click", () => changeDirection(-step, 0, "left"));
+  .addEventListener("click", () => changeDirection(-1, 0, "left"));
 document
   .getElementById("right-button")
-  .addEventListener("click", () => changeDirection(step, 0, "right"));
+  .addEventListener("click", () => changeDirection(1, 0, "right"));
 
 function resetGame() {
   alert(`Juego terminado. Puntuación: ${score}`);
   pokemons = [{ x: 185, y: 385 }];
-  dx = 0.5; // Restablecer la velocidad inicial
+  dx = 0.5;
   dy = 0;
-  step = 0.5; // Restablecer el paso inicial
+  step = 0.5;
   score = 0;
   scoreElement.textContent = "Puntuación: 0";
 
@@ -186,16 +181,31 @@ document.addEventListener("keydown", (event) => {
   if (isGamePaused) return;
   switch (event.key) {
     case "ArrowUp":
-      changeDirection(0, -step, "up");
+      changeDirection(0, -1, "up");
       break;
     case "ArrowDown":
-      changeDirection(0, step, "down");
+      changeDirection(0, 1, "down");
       break;
     case "ArrowLeft":
-      changeDirection(-step, 0, "left");
+      changeDirection(-1, 0, "left");
       break;
     case "ArrowRight":
-      changeDirection(step, 0, "right");
+      changeDirection(1, 0, "right");
       break;
   }
 });
+
+// Ajustar el tamaño del juego cuando cambia el tamaño de la ventana
+window.addEventListener("resize", adjustGameSize);
+
+function adjustGameSize() {
+  const containerWidth = gameArea.clientWidth;
+  const containerHeight = gameArea.clientHeight;
+  const scaleFactor = Math.min(containerWidth / 400, containerHeight / 800);
+
+  gameArea.style.transform = `scale(${scaleFactor})`;
+  gameArea.style.transformOrigin = "top left";
+}
+
+// Llamar a adjustGameSize inicialmente y cada vez que cambie el tamaño de la ventana
+adjustGameSize();
