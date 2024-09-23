@@ -4,9 +4,9 @@ const scoreElement = document.getElementById("score");
 const milestoneGif = document.getElementById("milestone-gif");
 const eatSound = document.getElementById("eat-sound");
 let pokemons = [{ x: 185, y: 385 }];
-let dx = 1; // Reducido de 2 a 1 para disminuir la velocidad
+let dx = 0.5; // Velocidad inicial reducida
 let dy = 0;
-const step = 1; // Reducido de 2 a 1 para disminuir la velocidad
+let step = 0.5; // Paso inicial reducido
 let score = 0;
 let isGamePaused = false;
 let currentDirection = "right";
@@ -82,10 +82,23 @@ function checkCollision() {
     growPokemon();
     playEatSound();
 
+    // Aumentar la velocidad después de 20 puntos
+    if (score === 20) {
+      dx *= 1.5;
+      dy *= 1.5;
+      step *= 1.5;
+    }
+
     if (score === 25 || score === 50) {
       showMilestoneGif();
     }
   }
+}
+
+function changeDirection(newDx, newDy, newDirection) {
+  dx = newDx * step;
+  dy = newDy * step;
+  currentDirection = newDirection;
 }
 
 function growPokemon() {
@@ -140,8 +153,9 @@ document
 function resetGame() {
   alert(`Juego terminado. Puntuación: ${score}`);
   pokemons = [{ x: 185, y: 385 }];
-  dx = 2;
+  dx = 0.5; // Restablecer la velocidad inicial
   dy = 0;
+  step = 0.5; // Restablecer el paso inicial
   score = 0;
   scoreElement.textContent = "Puntuación: 0";
 
