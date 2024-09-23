@@ -213,10 +213,10 @@ window.addEventListener("resize", adjustGameSize);
 function adjustGameSize() {
   const containerWidth = gameArea.clientWidth;
   const containerHeight = gameArea.clientHeight;
-  const scaleFactor = Math.min(containerWidth / 400, containerHeight / 800);
+  const scaleFactor = Math.min(containerWidth / 400, containerHeight / 600, 1);
 
   gameArea.style.transform = `scale(${scaleFactor})`;
-  gameArea.style.transformOrigin = "top left";
+  gameArea.style.transformOrigin = "center";
 }
 
 // Llamar a adjustGameSize inicialmente y cada vez que cambie el tamaño de la ventana
