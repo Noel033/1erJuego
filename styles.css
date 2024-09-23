@@ -21,19 +21,19 @@ body {
   align-items: center;
   width: 100%;
   height: 100vh;
-  padding: 20px 0;
+  padding: 10px 0; /* Reduced padding */
   box-sizing: border-box;
 }
 
 #gameArea {
   width: 100vw;
-  height: 95vh; /* Reduced from 70vh */
+  height: 80vh; /* Reduced height */
   max-width: 500px;
   border: 1px solid black;
   position: relative;
   overflow: hidden;
   touch-action: none;
-  margin-bottom: 10px; /* Added margin to push nav-bar up */
+  margin-bottom: 5px; /* Reduced margin */
 }
 
 .pokemon {
@@ -88,10 +88,10 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 10px;
+  gap: 5px; /* Reduced gap */
   width: 90vw;
   max-width: 300px;
-  margin-bottom: 20px; /* Increased from 20px to move buttons up */
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 #nav-bar button {
@@ -165,18 +165,19 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 10px;
   }
 
   #gameArea {
     width: 70vw;
-    height: 85vh; /* Slightly reduced to give more space to nav-bar */
+    height: 90vh;
     margin-bottom: 0;
   }
 
   #nav-bar {
     width: 25vw;
-    height: 70vh; /* Reduced to move buttons up */
+    height: 80vh;
     margin-bottom: 0;
+    margin-left: 10px; /* Added margin to separate from game area */
   }
 }
