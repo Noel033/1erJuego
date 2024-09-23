@@ -27,13 +27,13 @@ body {
 
 #gameArea {
   width: 100vw;
-  height: 80vh; /* Reduced from 70vh */
+  height: 95vh; /* Reduced from 70vh */
   max-width: 500px;
   border: 1px solid black;
   position: relative;
   overflow: hidden;
   touch-action: none;
-  margin-bottom: 20px; /* Added margin to push nav-bar up */
+  margin-bottom: 10px; /* Added margin to push nav-bar up */
 }
 
 .pokemon {
@@ -91,7 +91,7 @@ body {
   gap: 10px;
   width: 90vw;
   max-width: 300px;
-  margin-bottom: 10px; /* Increased from 20px to move buttons up */
+  margin-bottom: 20px; /* Increased from 20px to move buttons up */
 }
 
 #nav-bar button {
