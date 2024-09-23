@@ -88,10 +88,12 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 5px; /* Reduced gap */
+  gap: 5px;
   width: 90vw;
   max-width: 300px;
-  margin-bottom: 50px; /* Increased to 30px to add more space below buttons */
+  margin-bottom: 60px; /* Increased to 60px to add more space below buttons */
+  justify-content: center; /* Center the grid horizontally */
+  align-content: center; /* Center the grid vertically */
 }
 
 #nav-bar button {
@@ -107,6 +109,8 @@ body {
   transition: all 0.1s ease;
   position: relative;
   top: 0;
+  justify-self: center; /* Center each button in its grid cell */
+  align-self: center; /* Center each button in its grid cell */
 }
 
 #nav-bar button:active {
@@ -177,7 +181,7 @@ body {
   #nav-bar {
     width: 25vw;
     height: 80vh;
-    margin-bottom: 50px; /* Maintain 30px space at the bottom */
+    margin-bottom: 60px; /* Maintain 60px space at the bottom */
     margin-left: 10px; /* Added margin to separate from game area */
   }
 }
