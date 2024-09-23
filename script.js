@@ -2,14 +2,15 @@ const gameArea = document.getElementById("gameArea");
 const apple = document.getElementById("apple");
 const scoreElement = document.getElementById("score");
 const milestoneGif = document.getElementById("milestone-gif");
+const eatSound = document.getElementById("eat-sound");
 let pokemons = [{ x: 185, y: 385 }];
-let dx = 2;
+let dx = 1; // Reducido de 2 a 1 para disminuir la velocidad
 let dy = 0;
-const step = 2;
+const step = 1; // Reducido de 2 a 1 para disminuir la velocidad
 let score = 0;
 let isGamePaused = false;
 let currentDirection = "right";
-const pokemonSpacing = 40; // Espacio entre Pokémon
+const pokemonSpacing = 40;
 
 function createPokemonElement(x, y) {
   const pokemon = document.createElement("div");
@@ -79,8 +80,9 @@ function checkCollision() {
     scoreElement.textContent = `Puntuación: ${score}`;
     generateApple();
     growPokemon();
+    playEatSound();
 
-    if (score === 50) {
+    if (score === 25 || score === 50) {
       showMilestoneGif();
     }
   }
@@ -97,8 +99,13 @@ function growPokemon() {
 
 function showMilestoneGif() {
   isGamePaused = true;
-  milestoneGif.style.backgroundImage =
-    "url('https://media.tenor.com/o2WNfXdy6bsAAAAM/draco-malfoy.gif')";
+  if (score === 25) {
+    milestoneGif.style.backgroundImage =
+      "url('https://i.gifer.com/origin/53/53911e498c1ab46abd93e86eac057770_w200.gif')";
+  } else if (score === 50) {
+    milestoneGif.style.backgroundImage =
+      "url('https://media.tenor.com/o2WNfXdy6bsAAAAM/draco-malfoy.gif')";
+  }
   milestoneGif.style.display = "block";
   milestoneGif.onclick = () => {
     milestoneGif.style.display = "none";
@@ -110,6 +117,11 @@ function changeDirection(newDx, newDy, newDirection) {
   dx = newDx;
   dy = newDy;
   currentDirection = newDirection;
+}
+
+function playEatSound() {
+  eatSound.currentTime = 0;
+  eatSound.play();
 }
 
 document
