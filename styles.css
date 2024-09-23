@@ -91,7 +91,7 @@ body {
   gap: 5px; /* Reduced gap */
   width: 90vw;
   max-width: 300px;
-  margin-bottom: 15px; /* Increased to 15px to add space below buttons */
+  margin-bottom: 30px; /* Increased to 30px to add more space below buttons */
 }
 
 #nav-bar button {
@@ -177,7 +177,7 @@ body {
   #nav-bar {
     width: 25vw;
     height: 80vh;
-    margin-bottom: 15px; /* Maintain 15px space at the bottom */
+    margin-bottom: 30px; /* Maintain 30px space at the bottom */
     margin-left: 10px; /* Added margin to separate from game area */
   }
 }
