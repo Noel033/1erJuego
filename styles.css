@@ -91,7 +91,7 @@ body {
   gap: 5px;
   width: 90vw;
   max-width: 300px;
-  margin-bottom: 60px; /* Increased to 60px to add more space below buttons */
+  margin-bottom: 80px; /* Increased to 60px to add more space below buttons */
   justify-content: center; /* Center the grid horizontally */
   align-content: center; /* Center the grid vertically */
 }
@@ -181,7 +181,7 @@ body {
   #nav-bar {
     width: 25vw;
     height: 80vh;
-    margin-bottom: 60px; /* Maintain 60px space at the bottom */
-    margin-left: 10px; /* Added margin to separate from game area */
+    margin-bottom: 80px; /* Maintain 60px space at the bottom */
+    margin-left: 5px; /* Added margin to separate from game area */
   }
 }
