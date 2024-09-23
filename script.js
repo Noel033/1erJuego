@@ -4,9 +4,9 @@ const scoreElement = document.getElementById("score");
 const milestoneGif = document.getElementById("milestone-gif");
 const eatSound = document.getElementById("eat-sound");
 let pokemons = [{ x: 185, y: 385 }];
-let dx = 1.0;
+let dx = 0.7;
 let dy = 0;
-let step = 1.0;
+let step = 0.7;
 let score = 0;
 let applesEaten = 0;
 let isGamePaused = false;
@@ -87,8 +87,8 @@ function checkCollision() {
     if (
       applesEaten === 2 ||
       applesEaten === 5 ||
-      applesEaten === 10 ||
-      applesEaten === 20
+      applesEaten === 20 ||
+      applesEaten === 35
     ) {
       increaseSpeed();
     }
@@ -100,7 +100,7 @@ function checkCollision() {
 }
 
 function increaseSpeed() {
-  const speedIncrease = 2.0;
+  const speedIncrease = 1.6;
   dx *= speedIncrease;
   dy *= speedIncrease;
   step *= speedIncrease;
