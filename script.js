@@ -8,6 +8,7 @@ let dx = 0.5;
 let dy = 0;
 let step = 0.5;
 let score = 0;
+let applesEaten = 0;
 let isGamePaused = false;
 let currentDirection = "right";
 const pokemonSpacing = 40;
@@ -56,8 +57,11 @@ function updatePositions() {
 }
 
 function generateApple() {
-  const appleX = Math.floor(Math.random() * (gameArea.clientWidth - 25));
-  const appleY = Math.floor(Math.random() * (gameArea.clientHeight - 25));
+  const appleSize = 20; // Tamaño de la manzana
+  const maxX = gameArea.clientWidth - appleSize;
+  const maxY = gameArea.clientHeight - appleSize;
+  const appleX = Math.floor(Math.random() * maxX);
+  const appleY = Math.floor(Math.random() * maxY);
   apple.style.left = appleX + "px";
   apple.style.top = appleY + "px";
 }
@@ -73,13 +77,20 @@ function checkCollision() {
     headRect.bottom > appleRect.top
   ) {
     score++;
+    applesEaten++;
     scoreElement.textContent = `Puntuación: ${score}`;
     generateApple();
     growPokemon();
     playEatSound();
 
-    // Aumentar la velocidad gradualmente
-    if (score === 5 || score === 15 || score === 30) {
+    // Aumentar la velocidad basado en manzanas comidas
+    if (
+      applesEaten === 2 ||
+      applesEaten === 7 ||
+      applesEaten === 15 ||
+      applesEaten === 20 ||
+      applesEaten === 30
+    ) {
       increaseSpeed();
     }
 
@@ -152,6 +163,7 @@ function resetGame() {
   dy = 0;
   step = 0.5;
   score = 0;
+  applesEaten = 0;
   scoreElement.textContent = "Puntuación: 0";
 
   pokemonElements.forEach((element, index) => {
