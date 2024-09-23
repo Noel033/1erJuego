@@ -14,6 +14,24 @@ body {
   overflow: hidden;
 }
 
+#gameContainer {
+  display: flex;
+  align-items: center;
+}
+
+#pokemonChain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.pokemon-gif {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+
 #gameArea {
   width: 90vw;
   height: 60vh;
@@ -29,10 +47,22 @@ body {
   width: 7vmin;
   height: 7vmin;
   position: absolute;
-  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8_w200.gif");
+  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.pokemon.up {
+  transform: rotate(-90deg);
+}
+
+.pokemon.down {
+  transform: rotate(90deg);
+}
+
+.pokemon.left {
+  transform: scaleX(-1);
 }
 
 #apple {
@@ -53,6 +83,19 @@ body {
   color: rgb(99, 97, 35);
   text-shadow: 1px 1px 2px rgba(206, 193, 55, 0.5);
   z-index: 10;
+}
+
+#pokemonChain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.pokemon-gif {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
 }
 
 #nav-bar {
