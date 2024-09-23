@@ -27,7 +27,7 @@ body {
 
 #gameArea {
   width: 100vw;
-  height: 80vh; /* Reduced height */
+  height: 73vh; /* Reduced height */
   max-width: 500px;
   border: 1px solid black;
   position: relative;
