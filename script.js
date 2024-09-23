@@ -57,7 +57,7 @@ function updatePositions() {
 }
 
 function generateApple() {
-  const appleSize = 20; // Tamaño de la manzana
+  const appleSize = 70; // Increased size
   const maxX = gameArea.clientWidth - appleSize;
   const maxY = gameArea.clientHeight - appleSize;
   const appleX = Math.floor(Math.random() * maxX);
@@ -83,13 +83,12 @@ function checkCollision() {
     growPokemon();
     playEatSound();
 
-    // Aumentar la velocidad basado en manzanas comidas
+    // Increase speed based on apples eaten
     if (
       applesEaten === 2 ||
-      applesEaten === 7 ||
-      applesEaten === 15 ||
-      applesEaten === 20 ||
-      applesEaten === 30
+      applesEaten === 5 ||
+      applesEaten === 10 ||
+      applesEaten === 20
     ) {
       increaseSpeed();
     }
@@ -101,7 +100,7 @@ function checkCollision() {
 }
 
 function increaseSpeed() {
-  const speedIncrease = 1.2;
+  const speedIncrease = 2.0;
   dx *= speedIncrease;
   dy *= speedIncrease;
   step *= speedIncrease;
@@ -207,7 +206,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Ajustar el tamaño del juego cuando cambia el tamaño de la ventana
+// Adjust game size when window size changes
 window.addEventListener("resize", adjustGameSize);
 
 function adjustGameSize() {
@@ -219,5 +218,5 @@ function adjustGameSize() {
   gameArea.style.transformOrigin = "center";
 }
 
-// Llamar a adjustGameSize inicialmente y cada vez que cambie el tamaño de la ventana
+// Call adjustGameSize initially and whenever the window size changes
 adjustGameSize();

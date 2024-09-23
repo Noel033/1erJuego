@@ -19,34 +19,51 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 70vh;
-  max-height: 70vh;
+  height: 85vh;
+  max-height: 85vh;
 }
 
 #gameArea {
-  width: 90vw;
+  width: 100vw;
   height: 100%;
   max-width: 500px;
-  border: 2px solid black;
+  border: 1px solid black;
   position: relative;
   overflow: hidden;
   touch-action: none;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .pokemon {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
+.pokemon.right {
+  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
+}
+
+.pokemon.left {
+  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
+  transform: scaleX(-1);
+}
+
+.pokemon.up {
+  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
+  transform: rotate(-90deg);
+}
+
+.pokemon.down {
+  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
+  transform: rotate(90deg);
+}
+
 #apple {
-  width: 30px;
-  height: 30px;
+  width: 70px;
+  height: 70px;
   position: absolute;
   background-image: url("https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWR4OW5nb2NoOTEzbjZuMmphMjY3djdlbndremZpNGdpMXlkdDhleCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/XMasZzurdLwATHAS3N/giphy.gif");
   background-size: contain;
@@ -71,8 +88,8 @@ body {
   gap: 10px;
   width: 90vw;
   max-width: 300px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #nav-bar button {
@@ -80,9 +97,9 @@ body {
   height: 60px;
   font-size: 24px;
   border: none;
-  background-color: rgba(224, 224, 224, 0.8);
+  background-color: #e0e0e0;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 8px;
   touch-action: manipulation;
   box-shadow: 0 5px 0 #b0b0b0, 0 6px 6px rgba(0, 0, 0, 0.3);
   transition: all 0.1s ease;
@@ -127,11 +144,11 @@ body {
 
 @media (max-height: 600px) {
   #gameContainer {
-    height: 60vh;
+    height: 75vh;
   }
 
   #nav-bar {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   #nav-bar button {
@@ -148,7 +165,7 @@ body {
   }
 
   #gameContainer {
-    width: 60vw;
+    width: 70vw;
     height: 90vh;
   }
 
@@ -158,7 +175,7 @@ body {
   }
 
   #nav-bar {
-    width: 30vw;
+    width: 25vw;
     height: 80vh;
     margin-top: 0;
   }
