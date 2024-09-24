@@ -106,7 +106,7 @@ function checkCollision() {
 }
 
 function increaseSpeed() {
-  const speedIncrease = 1;
+  const speedIncrease = 1.4;
   dx *= speedIncrease;
   dy *= speedIncrease;
   step *= speedIncrease;
@@ -126,8 +126,8 @@ function showMilestoneGif() {
   if (score === 15) {
     milestoneGif.style.backgroundImage =
       "url('https://i.gifer.com/origin/53/53911e498c1ab46abd93e86eac057770_w200.gif')";
-    milestoneGif.style.width = "200px";
-    milestoneGif.style.height = "200px";
+    milestoneGif.style.width = "300px";
+    milestoneGif.style.height = "300px";
     milestoneGif.style.display = "block";
     milestoneGif.onclick = () => {
       milestoneGif.style.display = "none";
@@ -136,8 +136,8 @@ function showMilestoneGif() {
   } else if (score === 30) {
     milestoneGif.style.backgroundImage =
       "url('https://media.tenor.com/o2WNfXdy6bsAAAAM/draco-malfoy.gif')";
-    milestoneGif.style.width = "200px";
-    milestoneGif.style.height = "200px";
+    milestoneGif.style.width = "300px";
+    milestoneGif.style.height = "300px";
     milestoneGif.style.display = "block";
     milestoneGif.onclick = () => {
       milestoneGif.style.display = "none";
@@ -148,8 +148,12 @@ function showMilestoneGif() {
   }
 }
 
+const borderHitSound = new Audio("pj1.mp3");
+const backgroundMusic = new Audio("pj2.mp3");
+
 function showGameOverMessage() {
   isGamePaused = true;
+  borderHitSound.play(); // Play border hit sound
   milestoneGif.style.backgroundImage =
     "url('https://media.tenor.com/zesvxfO_I78AAAAM/draco-malfoy-harry-potter.gif')";
   milestoneGif.style.backgroundSize = "contain";
@@ -167,6 +171,17 @@ function showGameOverMessage() {
   milestoneGif.textContent = "Asustado, Potter?ñajañaja";
   milestoneGif.style.cursor = "pointer";
   milestoneGif.onclick = resetGame;
+}
+
+function showLaserEffect() {
+  const laserEffect = document.querySelector(".page-laser-to-text");
+  laserEffect.style.display = "flex";
+  initLaserEffect();
+
+  if (score >= 50) {
+    backgroundMusic.loop = true;
+    backgroundMusic.play();
+  }
 }
 
 function changeDirection(newDx, newDy, newDirection) {
@@ -188,6 +203,9 @@ function resetGame() {
   score = 0;
   applesEaten = 0;
   scoreElement.textContent = "Puntuación: 0";
+
+  backgroundMusic.pause();
+  backgroundMusic.currentTime = 0;
 
   pokemonElements.forEach((element, index) => {
     if (index !== 0) element.remove();
@@ -217,6 +235,22 @@ function showLaserEffect() {
   const laserEffect = document.querySelector(".page-laser-to-text");
   laserEffect.style.display = "flex";
   initLaserEffect();
+
+  // Añadir botón de cierre
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.style.position = "absolute";
+  closeButton.style.top = "10px";
+  closeButton.style.right = "10px";
+  closeButton.style.fontSize = "20px";
+  closeButton.style.cursor = "pointer";
+  closeButton.onclick = () => {
+    laserEffect.style.display = "none";
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+    isGamePaused = false;
+  };
+  laserEffect.appendChild(closeButton);
 }
 
 function initLaserEffect() {
@@ -234,7 +268,15 @@ function initLaserEffect() {
     copy: "Pide un Deseoˆˆ",
   });
 
-  input.addEventListener("keyup", (e) => {
+  let musicStarted = false;
+
+  input.addEventListener("input", (e) => {
+    if (!musicStarted) {
+      backgroundMusic.loop = true;
+      backgroundMusic.play();
+      musicStarted = true;
+    }
+
     clearTimeout(cb);
     cb = setTimeout(() => {
       text = new Text({
