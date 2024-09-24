@@ -105,7 +105,7 @@ function checkCollision() {
 }
 
 function increaseSpeed() {
-  const speedIncrease = 1.6;
+  const speedIncrease = 2.0;
   dx *= speedIncrease;
   dy *= speedIncrease;
   step *= speedIncrease;
