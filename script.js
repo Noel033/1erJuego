@@ -91,10 +91,11 @@ function checkCollision() {
     playEatSound();
 
     if (
-      applesEaten === 2 ||
+      applesEaten === 1 ||
       applesEaten === 5 ||
-      applesEaten === 20 ||
-      applesEaten === 35
+      applesEaten === 10 ||
+      applesEaten === 15 ||
+      applesEaten === 48
     ) {
       increaseSpeed();
     }
