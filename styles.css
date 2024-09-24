@@ -138,14 +138,22 @@ body {
   transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
-  max-width: 200px;
-  max-height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
   display: none;
   z-index: 20;
+  font-family: "Harry Potter", sans-serif; /* Asegúrate de incluir una fuente adecuada */
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+#milestone-gif.large {
+  width: 80%;
+  height: 80%;
+  max-width: none;
+  max-height: none;
 }
 
 @media (max-height: 600px) {
