@@ -46,21 +46,21 @@ body {
 }
 
 .pokemon.right {
-  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
+  background-image: url("harry.gif");
 }
 
 .pokemon.left {
-  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
+  background-image: url("harry.gif");
   transform: scaleX(-1);
 }
 
 .pokemon.up {
-  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
+  background-image: url("harry.gif");
   transform: rotate(-90deg);
 }
 
 .pokemon.down {
-  background-image: url("https://i.gifer.com/origin/13/134cda849f249b997c0a24dbb15c9bc8.gif");
+  background-image: url("harry.gif");
   transform: rotate(90deg);
 }
 

@@ -125,8 +125,7 @@ function growPokemon() {
 function showMilestoneGif() {
   isGamePaused = true;
   if (score === 15) {
-    milestoneGif.style.backgroundImage =
-      "url('https://i.gifer.com/origin/53/53911e498c1ab46abd93e86eac057770_w200.gif')";
+    milestoneGif.style.backgroundImage = "url('nivel15.gif')";
     milestoneGif.style.width = "300px";
     milestoneGif.style.height = "300px";
     milestoneGif.style.display = "block";
@@ -135,8 +134,7 @@ function showMilestoneGif() {
       isGamePaused = false;
     };
   } else if (score === 30) {
-    milestoneGif.style.backgroundImage =
-      "url('https://media.tenor.com/o2WNfXdy6bsAAAAM/draco-malfoy.gif')";
+    milestoneGif.style.backgroundImage = "url('nivel30.gif')";
     milestoneGif.style.width = "300px";
     milestoneGif.style.height = "300px";
     milestoneGif.style.display = "block";
@@ -155,8 +153,7 @@ const backgroundMusic = new Audio("pj2.mp3");
 function showGameOverMessage() {
   isGamePaused = true;
   borderHitSound.play(); // Play border hit sound
-  milestoneGif.style.backgroundImage =
-    "url('https://media.tenor.com/zesvxfO_I78AAAAM/draco-malfoy-harry-potter.gif')";
+  milestoneGif.style.backgroundImage = "url('chocac.gif')";
   milestoneGif.style.backgroundSize = "contain";
   milestoneGif.style.backgroundColor = "transparent";
   milestoneGif.style.color = "orange";
